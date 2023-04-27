@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+		"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+		"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value="html" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+
+	<interceptors>
+		<interceptor-stack name="exception">
+			<interceptor-ref name="exception" />
+			<interceptor-ref name="alias" />
+			<interceptor-ref name="servletConfig" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="i18n" />
+			<interceptor-ref name="chain" />
+			<interceptor-ref name="debugging" />
+			<interceptor-ref name="scopedModelDriven" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="checkbox" />
+			<interceptor-ref name="staticParams" />
+			<interceptor-ref name="actionMappingParams" />
+			<interceptor-ref name="params">
+				<param name="excludeParams">^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="conversionError" />
+		</interceptor-stack>
+	</interceptors>
+
+	<default-interceptor-ref name="exception" />
+
+	<global-results>
+		<result name="error">/WEB-INF/views/error.jsp</result>
+	</global-results>
+
+	 <package name="default" namespace="/" extends="struts-default">
+    <action name="hello" class="com.example.HelloWorldAction">
+      <result>/hello.jsp</result>
+    </action>
+	<action name="taskList"
+			class="ml.taskmanager.action.TaskListAction" method="execute">
+			<result name="success">/task-list.jsp</result>
+		</action>
+		<!-- <action name="index">
+			<result>/index.jsp</result>
+			
+		</action> -->
+		<!-- <action name="taskList"
+			class="ml.taskmanager.action.TaskListAction" method="execute">
+			<result name="success">/task-list.jsp</result>
+		</action>
+		<action name="edittask"
+			class="ml.taskmanager.action.EditTaskAction" method="execute">
+			<result name="success">/edit-task.jsp</result>
+		</action>
+		<action name="addtask"
+			class="ml.taskmanager.action.AddTaskAction" method="execute">
+			<result name="success">/add-task.jsp</result>
+		</action> -->
+	</package>
+</struts>

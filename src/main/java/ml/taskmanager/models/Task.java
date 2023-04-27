@@ -52,6 +52,8 @@ public class Task implements Serializable {
         this.dueDate = dueDate;
         this.completed = completed;
     }
+    
+    
 
     @Override
     public boolean equals(Object obj) {

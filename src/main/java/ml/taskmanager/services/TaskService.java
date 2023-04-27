@@ -12,7 +12,7 @@ public class TaskService {
 
 	private TaskDao taskDao;
 
-	public void addTask(String title, String description) {
+	public void addTask(String title, String description,LocalDateTime localDateTime,boolean completed) {
 		Task task = new Task(title, description);
 		taskDao.addTask(task);
 	}

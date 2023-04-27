@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.Action;
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -14,16 +17,20 @@ import ml.taskmanager.services.TaskService;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class TaskListAction extends Action {
+public class TaskListAction extends ActionSupport {
 
+    private static final long serialVersionUID = 1L;
 	private TaskService taskService;
 
-	private String execute(HttpServletRequest request, HttpServletResponse response) {
+    public void setTaskService(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
-		List<Task> tasks = taskService.getAllTasks();
-		request.setAttribute("tasks", tasks);
-		return "task-list.jsp";
-
-	}
-
+    public String execute() {
+        List<Task> tasks = taskService.getAllTasks();
+        addActionMessage("Task list retrieved successfully.");
+        ServletActionContext.getRequest().setAttribute("tasks", tasks);
+        return SUCCESS;
+    }
 }
+

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +16,9 @@
 			<tr>
 				<th>Title</th>
 				<th>Description</th>
+				<th>Due Date</th>
+				<th>Completed</th>
+				<!-- <th>Priority</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -24,6 +27,9 @@
 
 					<td>${task.title}</td>
 					<td>${task.description}</td>
+					<td>${task.duedate}</td>
+					<td>${task.completed}</td>
+					<%-- <td>${task.completed}</td> --%>
 				</tr>
 			</c:forEach>
 		</tbody>
