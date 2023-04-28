@@ -10,8 +10,9 @@ import ml.taskmanager.models.Task;
 @RequiredArgsConstructor
 public class TaskService {
 
-	private TaskDao taskDao;
-
+	
+	private final TaskDao taskDao = new TaskDao();
+	
 	public void addTask(String title, String description,LocalDateTime localDateTime,boolean completed) {
 		Task task = new Task(title, description);
 		taskDao.addTask(task);
@@ -22,7 +23,7 @@ public class TaskService {
 	}
 
 	public void updateTask(int taskId, LocalDateTime localDateTime,boolean completed,String title, String description) {
-		Task task = new Task((long) taskId, localDateTime, completed, title, description);
+		Task task = new Task((long)taskId, title, description, localDateTime, completed);
 		taskDao.updateTask(task);
 	}
 

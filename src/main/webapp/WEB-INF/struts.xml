@@ -36,34 +36,25 @@
 		<result name="error">/WEB-INF/views/error.jsp</result>
 	</global-results>
 
-	<package name="default" namespace="/" extends="struts-default">
-		<action name="hello" class="com.example.HelloWorldAction">
-			<result>/hello.jsp</result>
-		</action>
-		<action name="taskList"
-			class="ml.taskmanager.action.TaskListAction" method="execute">
-			<result name="success">/task-list.jsp</result>
-		</action>
-		<action name="create"
-			class="com.example.taskapp.actions.TaskAction" method="create">
-			<result name="success">/add-task.jsp</result>
-		</action>
-		<action name="update"
-			class="com.example.taskapp.actions.TaskAction" method="update">
-			<result name="success">/add-task.jsp</result>
-		</action>
+	 <package name="default" extends="struts-default">
+    <action name="add-task" class="com.example.taskapp.actions.TaskAction" method="createTask">
+      <result name="success">/add-task.jsp</result>
+    </action>
 
-		<action name="delete"
-			class="com.example.taskapp.actions.TaskAction" method="delete">
-			<result name="success">/tasks.jsp</result>
-		</action>
+    <action name="edit-task" class="com.example.taskapp.actions.TaskAction" method="updateTask">
+      <result name="success">/success.jsp</result>
+      <result name="input">/edit-task.jsp</result>
+    </action>
 
-		<!-- <action name="index"> <result>/index.jsp</result> </action> -->
-		<!-- <action name="taskList" class="ml.taskmanager.action.TaskListAction" 
-			method="execute"> <result name="success">/task-list.jsp</result> </action> 
-			<action name="edittask" class="ml.taskmanager.action.EditTaskAction" method="execute"> 
-			<result name="success">/edit-task.jsp</result> </action> <action name="addtask" 
-			class="ml.taskmanager.action.AddTaskAction" method="execute"> <result name="success">/add-task.jsp</result> 
-			</action> -->
-	</package>
+    <action name="delete-task" class="com.example.taskapp.actions.TaskAction" method="delete">
+      <result name="success">/task-list.jsp</result>
+    </action>
+
+    <action name="task-list" class="com.example.taskapp.actions.TaskAction" method="listTasks">
+      <result name="success">/task-list.jsp</result>
+    </action>
+  </package>
+	
+	
+	
 </struts>
